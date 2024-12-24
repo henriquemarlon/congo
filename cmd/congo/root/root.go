@@ -42,13 +42,7 @@ Press Ctrl+C to stop the application.
 func init() {
 	var configPath string
 
-	Cmd.Flags().StringVar(&configPath, "config", "", "Path to the configuration file (required)")
 	Cmd.Flags().BoolVar(&verbose, "verbose", false, "Show detailed output, including sensitive information")
-
-	configs.ConfigureLogger(slog.LevelDebug)
-	if err := Cmd.MarkFlagRequired("config"); err != nil {
-		os.Exit(1)
-	}
 
 	Cmd.PreRun = func(cmd *cobra.Command, args []string) {
 		if verbose {
@@ -56,8 +50,15 @@ func init() {
 		} else {
 			configs.ConfigureLogger(slog.LevelInfo)
 		}
-		configs.LoadConfig(configPath)
 	}
+
+	Cmd.Flags().StringVar(&configPath, "config", "", "Path to the configuration file (required)")
+	configs.ConfigureLogger(slog.LevelDebug)
+	if err := Cmd.MarkFlagRequired("config"); err != nil {
+		os.Exit(1)
+	}
+
+	configs.LoadConfig(configPath)
 }
 
 func run(cmd *cobra.Command, args []string) {
