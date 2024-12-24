@@ -22,8 +22,9 @@ import (
 const CMD_NAME = "congo"
 
 var (
-	verbose bool
-	Cmd     = &cobra.Command{
+	configPath string
+	verbose    bool
+	Cmd        = &cobra.Command{
 		Use:   CMD_NAME,
 		Short: "Congo is sensor simulator for smart city system development",
 		Long:  "This CLI provides a scalable simulation of sensors, supporting any type and handling thousands of concurrent units",
@@ -40,9 +41,12 @@ Press Ctrl+C to stop the application.
 `
 
 func init() {
-	var configPath string
-
 	Cmd.Flags().BoolVar(&verbose, "verbose", false, "Show detailed output, including sensitive information")
+
+	Cmd.Flags().StringVar(&configPath, "config", "", "Path to the configuration file (required)")
+	if err := Cmd.MarkFlagRequired("config"); err != nil {
+		os.Exit(1)
+	}
 
 	Cmd.PreRun = func(cmd *cobra.Command, args []string) {
 		if verbose {
@@ -51,17 +55,14 @@ func init() {
 			configs.ConfigureLogger(slog.LevelInfo)
 		}
 	}
-
-	Cmd.Flags().StringVar(&configPath, "config", "", "Path to the configuration file (required)")
-	configs.ConfigureLogger(slog.LevelDebug)
-	if err := Cmd.MarkFlagRequired("config"); err != nil {
-		os.Exit(1)
-	}
-
-	configs.LoadConfig(configPath)
 }
 
 func run(cmd *cobra.Command, args []string) {
+	if err := configs.LoadConfig(configPath); err != nil {
+		slog.Error("Failed to load configuration file", "error", err)
+		os.Exit(1)
+	}
+
 	ctx := cmd.Context()
 
 	eventDispatcher := events.NewEventDispatcher()

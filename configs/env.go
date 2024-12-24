@@ -41,7 +41,7 @@ func sortConfig(config configTOML) []string {
 	return keys
 }
 
-func LoadConfig(path string) {
+func LoadConfig(path string) error {
 	data := readTOML(path)
 	config := decodeTOML(data)
 
@@ -59,8 +59,8 @@ func LoadConfig(path string) {
 
 		err := os.Setenv(envName, value)
 		if err != nil {
-			slog.Error("Failed to set environment variable", "error", err)
-			os.Exit(1)
+			return err
 		}
 	}
+	return nil
 }
