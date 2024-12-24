@@ -46,9 +46,7 @@ func init() {
 	Cmd.Flags().BoolVar(&verbose, "verbose", false, "Show detailed output, including sensitive information")
 
 	configs.ConfigureLogger(slog.LevelDebug)
-
 	if err := Cmd.MarkFlagRequired("config"); err != nil {
-		slog.Error("Failed to mark flag as required", "error", err)
 		os.Exit(1)
 	}
 
@@ -57,11 +55,6 @@ func init() {
 			configs.ConfigureLogger(slog.LevelDebug)
 		} else {
 			configs.ConfigureLogger(slog.LevelInfo)
-		}
-
-		if configPath == "" {
-			slog.Error("Config path is required")
-			os.Exit(1)
 		}
 		configs.LoadConfig(configPath)
 	}
