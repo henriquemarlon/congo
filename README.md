@@ -1,6 +1,7 @@
 <br>
+
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/84360409-225b-497b-85f0-752a6cd99f11" align="center" width="20%">
+    <img src="https://github.com/user-attachments/assets/3b19f6b5-9c00-4f8e-9ce1-e5e53c83edf3" align="center" width="20%">
 </p>
 </br>
 <div align="center">
@@ -33,7 +34,7 @@ In the process of developing systems that involve a large number of devices, suc
 ## Architecture
 <br>
 
-![image](https://github.com/user-attachments/assets/9c11b5c8-8729-4b0c-9b04-a857480f8c94)
+![image](https://github.com/user-attachments/assets/39eb5ba4-af77-4eb4-a9fc-b1d12ab9fc68)
 
 <div align="justify">
 	
