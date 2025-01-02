@@ -1,0 +1,9 @@
+[MONGO]
+DB_URL = "mongodb://root:password@host.docker.internal:27017"
+DB_NAME = "mongodb"
+COLLECTION_NAME = "sensors"
+
+[HIVEMQ]
+SERVER_URL = "tcp://host.docker.internal:1883"
+USERNAME = "admin"
+PASSWORD = "admin"
