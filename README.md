@@ -87,5 +87,5 @@ Run the CLI using the [Docker image](https://github.com/henriquemarlon/congo/pkg
 docker run --rm \
 	-v $(pwd):/app -w /app \
 	ghcr.io/henriquemarlon/congo:latest \
-	--config ./Config.toml --verbose
+	--config <path-to-toml-file> --verbose
 ```
