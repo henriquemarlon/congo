@@ -81,11 +81,17 @@ In the process of developing systems that involve a large number of devices, suc
 > PASSWORD=
 > ```
 
-Run the CLI using the [Docker image](https://github.com/henriquemarlon/congo/pkgs/container/congo/330015879?tag=latest) provided for distributing its binary. Use the following command:
+1. Run the CLI using the [Docker image](https://github.com/henriquemarlon/congo/pkgs/container/congo/330015879?tag=latest) provided for distributing its binary. Use the following command:
 
 ```sh
 docker run --rm \
 	-v $(pwd):/app -w /app \
 	ghcr.io/henriquemarlon/congo:latest \
 	--config <path-to-toml-file> --verbose
+```
+
+2. Run tee CLI using the Go package:
+
+```sh
+go install github.com/henriquemarlon/congo/cmd/congo@latest
 ```
