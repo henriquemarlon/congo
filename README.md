@@ -90,8 +90,12 @@ docker run --rm \
 	--config <path-to-toml-file> --verbose
 ```
 
-2. Run tee CLI using the Go package:
+2. Run the CLI using the Go package:
 
 ```sh
 go install github.com/henriquemarlon/congo/cmd/congo@latest
+```
+
+```sh
+congo --help
 ```
