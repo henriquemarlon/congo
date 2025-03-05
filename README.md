@@ -5,7 +5,7 @@
 </p>
 </br>
 <div align="center">
-    <i>Sensor Simulator for Smart City System Development</i>
+    <i>An sensor simulator for Smart City system's development</i>
 </div>
 <div align="center">
 <b>This CLI provides a scalable simulation of sensors, supporting any type </br> and handling thousands of concurrent units</b>
