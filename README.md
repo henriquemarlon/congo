@@ -8,7 +8,7 @@
     <i>An sensor simulator for Smart City system's development</i>
 </div>
 <div align="center">
-<b>A scalable simulation of sensors, supporting any type </br> and handling thousands of concurrent units</b>
+<b>A scalable simulation of sensors, supporting any type and handling thousands of concurrent units</b>
 </div>
 <br>
 <p align="center">
